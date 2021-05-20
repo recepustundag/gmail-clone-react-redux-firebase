@@ -1,14 +1,14 @@
 import React from "react";
+import { useSelector } from 'react-redux'
 
 import { IconButton, Button, makeStyles, Avatar } from "@material-ui/core";
 
 /* icons */
 import LabelImportantIcon from "@material-ui/icons/LabelImportant";
 
-import profilePhoto from "../assets/img/avatar.jpg";
 import DetailsActions from "./DetailActions";
-import { useSelector } from "react-redux";
 import { selectDetailMail } from '../features/mail/mailSlice'
+import { selectUser } from "../features/user/userSlice";
 
 const useStyles = makeStyles(() => ({
   buttonInbox: {
@@ -23,7 +23,7 @@ const Details = () => {
   const classes = useStyles();
 
   const mail = useSelector(selectDetailMail)
-
+  const user = useSelector(selectUser)
   return (
     <div>
       <DetailsActions />
@@ -37,7 +37,7 @@ const Details = () => {
         </div>
         <div className="py-6 flex items-start">
           <div className="w-16">
-            <Avatar alt={mail.to} src={profilePhoto} />
+            <Avatar alt={mail.to} src={user.photoUrl} />
           </div>
           <div className="flex flex-col items-start px-4">
             <div className="font-semibold text-lg flex items-start">

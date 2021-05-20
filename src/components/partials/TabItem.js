@@ -32,7 +32,7 @@ const TabItem = ({ id, to, subject, message, time }) => {
   };
 
   return (
-    <div onClick={detailMail} className="flex items-center text-sm relative px-3 cursor-pointer transition duration-300 ease-in-out border border-gray-200 tab-item">
+    <div className="flex items-center text-sm relative px-3 cursor-pointer transition duration-300 ease-in-out border border-gray-200 tab-item">
       <div className="flex items-center">
         <Checkbox size="small" color="default" inputProps={{ "aria-label": "uncontrolled-checkbox" }} />
         <IconButton color="primary" component="span">
@@ -43,7 +43,7 @@ const TabItem = ({ id, to, subject, message, time }) => {
         </IconButton>
       </div>
       <div className="primaryColor whitespace-nowrap mr-16">{to}</div>
-      <div className="w-full flex items-center justify-between">
+      <div onClick={detailMail} className="w-full flex items-center justify-between">
         <div className="primaryColor truncate max-w-3xl">
           {subject} - {message}
         </div>

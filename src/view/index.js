@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,14 +12,41 @@ import MeetMenu from "../components/MeetMenu";
 import Content from "../components/Content";
 import Details from "../components/Details";
 import SendMail from "../components/SendMail";
+
+/* reduce */
 import { selectModalDialog, openModalDialog } from "../features/mail/mailSlice";
+import { login, selectUser } from "../features/user/userSlice";
+
+/* login page */
+import Login from './login'
+import { auth } from "../firebase";
 
 const App = () => {
   const modalOpen = useSelector(selectModalDialog);
   const dispatch = useDispatch();
 
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if(user){
+        dispatch(
+          login({
+            displayName: user.displayName,
+            email: user.email,
+            photoUrl: user.photoURL
+          })
+        )
+      }
+    })
+  }, [])
+
   return (
     <Router>
+
+      { !user ? (
+        <Login />
+      ) : (
       <div className="relative">
         <Header />
         <div className="flex items-start">
@@ -46,6 +73,8 @@ const App = () => {
         </div>
         {modalOpen && <SendMail />}
       </div>
+      )}
+
     </Router>
   );
 };
