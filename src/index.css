@@ -7,7 +7,7 @@ body{
 }
 
 svg{
-  fill: #5f6368 !important;
+  color: #5f6368;
 }
 
 input:-webkit-autofill,
