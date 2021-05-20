@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  overflow: hidden;
+}
+
+svg{
+  fill: #5f6368 !important;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #FFF inset !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+.menucolor{
+  color: #202124;
+}
+.primaryColor{
+  color: #5f6368;
+}
+.secondaryColor{
+  color: #3c4043;
+}
+
+.max-w-xxs{
+  max-width: 16rem;
+}
+
+.tab-item:hover{
+  -webkit-box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
+.tab-item:hover .right-action{
+  opacity: 1;
+}
